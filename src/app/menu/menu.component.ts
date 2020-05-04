@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Dish } from '../shared/dish';
 
-DISHES: Dish[] = [
+const DISHES: Dish[] = [
     {
       id: '0',
       name: 'Uthappizza',
