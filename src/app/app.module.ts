@@ -6,19 +6,26 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 import 'hammerjs';
-
+import { MenuComponent } from './menu/menu.component';
+//import { MatListModule } from '@angular/material/list';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatListModule,
+     MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
