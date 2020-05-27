@@ -8,16 +8,17 @@ import { DISHES } from "../shared/dishes";
 })
 export class DishService {
 
-	getDishes(): Dish[]{
-		return DISHES;
+	getDishes(): Promise<Dish[]>{
+    //console.log("yum");  
+		return Promise.resolve(DISHES);
 	}
 
-	getDish(id: string): Dish {
-    	return DISHES.filter((dish) => (dish.id === id))[0];
+	getDish(id: string): Promise<Dish> {
+    	return Promise.resolve(DISHES.filter((dish) => (dish.id === id))[0]);//here dish is var named by us :)
   	}
 
-  	getFeaturedDish(): Dish {
-    	return DISHES.filter((dish) => dish.featured)[0];
+  	getFeaturedDish(): Promise<Dish> {
+    	return Promise.resolve(DISHES.filter((dish) => dish.featured)[0]);
   	}
 
   constructor() { }
