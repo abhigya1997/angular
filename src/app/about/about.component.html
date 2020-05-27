@@ -55,7 +55,7 @@
 
 
   
-<div fxFlex>
+<div fxFlex *ngIf = "leader_obj">
     <h2>Corporate Leadership</h2>
     <div class="container"
      fxLayout="column"
@@ -72,6 +72,9 @@
   </mat-list>
 
 </div>
+  </div>
+  <div [hidden]="leader_obj">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
 </div>
 

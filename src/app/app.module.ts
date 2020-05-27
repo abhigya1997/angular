@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -60,6 +61,7 @@ import { LoginComponent } from './login/login.component';
     MatListModule,
      AppRoutingModule,
      MatGridListModule,
+     MatProgressSpinnerModule,
     MatCardModule,
     MatButtonModule,
      MatSidenavModule,
