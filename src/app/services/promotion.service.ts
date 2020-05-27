@@ -18,7 +18,7 @@ export class PromotionService {
   }
 
   getPromotion(id: string): Observable<Promotion> {
-    return of(PROMOTIONS.filter((promo) => (promo.id === id))[0]).pipe(dealy(2000));
+    return of(PROMOTIONS.filter((promo) => (promo.id === id))[0]).pipe(delay(2000));
     // return new Promise(resolve => {
     //     setTimeout(() => resolve(PROMOTIONS.filter((promo) => (promo.id === id))[0] , 2000);
     //   });
