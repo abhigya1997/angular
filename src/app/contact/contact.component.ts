@@ -1,4 +1,4 @@
-import { Component, OnInit ,ViewChild } from '@angular/core';
+  import { Component, OnInit ,ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Feedback, ContactType } from '../shared/feedback';
@@ -77,7 +77,9 @@ export class ContactComponent implements OnInit {
   onValueChanged(data?: any) {
     if (!this.feedbackForm) { return; }
     const form = this.feedbackForm;
+    //console.log(form);
     for (const field in this.formErrors) {
+      //console.log(field);
       if (this.formErrors.hasOwnProperty(field)) {
         // clear previous error message (if any)
         this.formErrors[field] = '';
@@ -97,7 +99,7 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
     this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
+    //console.log(this.feedback);
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
