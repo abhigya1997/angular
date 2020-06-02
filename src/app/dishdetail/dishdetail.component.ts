@@ -28,7 +28,7 @@ export class DishdetailComponent implements OnInit {
   myDate = new Date();
   //commentForm: FormGroup;
   commentForm: FormGroup;
-
+  dishcopy: Dish;
 
   @ViewChild('fform') commentFormDirective;
 
@@ -74,7 +74,7 @@ export class DishdetailComponent implements OnInit {
       .subscribe(dishIds => this.dishIds = dishIds,
         errmess => this.errMess = <any>errmess);
     this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
+      .subscribe(dish => {  this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); });
   }
 
 
@@ -142,7 +142,13 @@ export class DishdetailComponent implements OnInit {
       //console.log(this.star_val);
 
 
-      this.dish.comments.push(this.new_comment);
+      this.dishcopy.comments.push(this.new_comment);
+
+       this.dishservice.putDish(this.dishcopy)
+      .subscribe(dish => {
+        this.dish = dish; this.dishcopy = dish;
+      },
+      errmess => { this.dish = null; this.dishcopy = null; this.errMess = <any>errmess; });
 
       this.commentForm.reset({
         Name : '' ,
