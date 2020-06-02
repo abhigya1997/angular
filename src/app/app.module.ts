@@ -38,7 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
@@ -83,6 +83,7 @@ import { LoginComponent } from './login/login.component';
         LoginComponent
   ],
   providers: [DishService,
+              ProcessHTTPMsgService,
               PromotionService,
               LeaderService],
   bootstrap: [AppComponent]

@@ -2,7 +2,6 @@ import { Component, OnInit , ViewChild  } from '@angular/core';
 import { Dish } from '../shared/dish';
 
 import { DishService } from '../services/dish.service';
-import { DISHES } from '../shared/dishes';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
@@ -18,7 +17,7 @@ import { baseURL } from "../shared/baseurl";
   styleUrls: ['./dishdetail.component.scss']
 })
 export class DishdetailComponent implements OnInit {
-
+  errMess : string ;
   BASEURL : any ;
    dishIds: string[];
   prev: string;
@@ -72,7 +71,8 @@ export class DishdetailComponent implements OnInit {
 
 
     this.dishservice.getDishIds()
-      .subscribe(dishIds => this.dishIds = dishIds);
+      .subscribe(dishIds => this.dishIds = dishIds,
+        errmess => this.errMess = <any>errmess);
     this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
       .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
   }
