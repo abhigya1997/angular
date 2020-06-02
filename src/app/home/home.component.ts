@@ -7,6 +7,7 @@ import { PromotionService } from '../services/promotion.service';
 import { Leader } from '../shared/leader';
 import { LEADER } from '../shared/leaders';
 import { LeaderService } from '../services/leader.service';
+import { baseURL } from '../shared/baseurl';
 
 @Component({
   selector: 'app-home',
@@ -15,13 +16,16 @@ import { LeaderService } from '../services/leader.service';
 })
 export class HomeComponent implements OnInit {
 
+  BASEURL : any;
    dish: Dish;
    leader_instance : Leader;
   promotion: Promotion;
 
   constructor(private dishservice: DishService,
     private promotionservice: PromotionService,
-    private leaderservice : LeaderService) { }
+    private leaderservice : LeaderService) {
+      this.BASEURL = baseURL;
+     }
 
   ngOnInit() {
     this.dishservice.getDish('2')

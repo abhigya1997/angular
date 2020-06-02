@@ -36,6 +36,8 @@ import { ContactComponent } from './contact/contact.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
@@ -55,6 +57,7 @@ import { LoginComponent } from './login/login.component';
     LoginComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,

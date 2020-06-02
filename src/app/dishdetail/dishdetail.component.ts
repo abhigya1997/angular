@@ -8,6 +8,8 @@ import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
 import {MatSliderModule} from '@angular/material/slider';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { baseURL } from "../shared/baseurl";
+
 
 
 @Component({
@@ -17,6 +19,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DishdetailComponent implements OnInit {
 
+  BASEURL : any ;
    dishIds: string[];
   prev: string;
   next: string;
@@ -61,6 +64,7 @@ export class DishdetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location) {
       this.createForm();
+      this.BASEURL = baseURL;
      }
 
 
