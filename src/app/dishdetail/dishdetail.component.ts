@@ -8,13 +8,27 @@ import { switchMap } from 'rxjs/operators';
 import {MatSliderModule} from '@angular/material/slider';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { baseURL } from "../shared/baseurl";
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
-  styleUrls: ['./dishdetail.component.scss']
+  styleUrls: ['./dishdetail.component.scss'],
+    animations: [
+    trigger('visibility', [
+        state('shown', style({
+            transform: 'scale(1.0)',
+            opacity: 1
+        })),
+        state('hidden', style({
+            transform: 'scale(0.5)',
+            opacity: 0
+        })),
+        transition('* => *', animate('0.1s ease-in-out'))
+    ])
+  ]
 })
 export class DishdetailComponent implements OnInit {
   errMess : string ;
@@ -24,6 +38,7 @@ export class DishdetailComponent implements OnInit {
   next: string;
 	dish: Dish;
   star_val : number;
+  visibility = 'shown';
 
   myDate = new Date();
   //commentForm: FormGroup;
@@ -73,8 +88,8 @@ export class DishdetailComponent implements OnInit {
     this.dishservice.getDishIds()
       .subscribe(dishIds => this.dishIds = dishIds,
         errmess => this.errMess = <any>errmess);
-    this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-      .subscribe(dish => {  this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); });
+    this.route.params.pipe(switchMap((params: Params) => {this.visibility = 'hidden'; return this.dishservice.getDish(+params['id']);}))
+      .subscribe(dish => {  this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id);this.visibility = 'shown'; });
   }
 
 
