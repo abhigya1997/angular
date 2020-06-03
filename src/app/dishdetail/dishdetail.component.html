@@ -7,7 +7,7 @@
     fxLayoutGap.xs="0">
 
   <div fxFlex="40">
-    <div fxFlex *ngIf="dish" [@visibility]="visibility">
+    <div fxFlex *ngIf="dish" [@visibility]="visibility" [@expand]>
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -43,7 +43,7 @@
   <div fxFlex="40">
   	
   	
-  	 <div fxFlex *ngIf="dish" [@visibility]="visibility">
+  	 <div fxFlex *ngIf="dish" [@visibility]="visibility" [@expand]>
     <mat-list>
     	<h1> Comments</h1>
     	<mat-list-item *ngFor = "let individual_comment of dish.comments">
@@ -57,7 +57,7 @@
         <p matLine> {{commentForm.Name | json}}</p>
       </mat-list-item> -->
 	   </mat-list>
-     <mat-list *ngIf = "commentForm.valid">
+     <mat-list *ngIf = "commentForm.valid" >
       <mat-list-item> 
         <p matLine>{{ commentForm.value.comment  }}</p>
         <p matLine>{{commentForm.value.rating}} Stars</p>
